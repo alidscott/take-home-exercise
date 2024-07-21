@@ -21,7 +21,7 @@ def main():
                     print("Not a valid input. Goodbye!")
                     sys.exit()
                 if char in operators:
-                    # If operator, call operation 
+                    # If char is an operator, call operation
                     res = operators[char](stack)
                 #Add to stack if number 
                 else:
