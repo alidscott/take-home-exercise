@@ -22,7 +22,7 @@ def main():
                     sys.exit()
                 if char in operators:
                     # If char is an operator, call operation
-                    res = operators[char](stack)
+                    operators[char](stack)
                 #Add to stack if number 
                 else:
                     stack.append(int(char))

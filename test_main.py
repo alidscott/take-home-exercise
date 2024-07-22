@@ -4,7 +4,6 @@ from io import StringIO
 from main import main
 
 
-
 class TestSum(unittest.TestCase):
 
     @patch('builtins.input', side_effect=['f', 'q'])
@@ -24,6 +23,15 @@ class TestSum(unittest.TestCase):
         except SystemExit:
             pass
         self.assertEqual(mock_stdout.getvalue(), "Need 2 operands before operator! Now exiting...\n")
+
+    @patch('builtins.input', side_effect=['10 0 /', 'q'])
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_bad_division(self, mock_stdout, mock_input):
+        try: 
+            main()
+        except SystemExit:
+            pass
+        self.assertEqual(mock_stdout.getvalue(), "Division by 0 not allowed :/. Now exiting...\n")
 
     @patch('builtins.input', side_effect=['5 5 5 8 + + -', 'q'])
     @patch('sys.stdout', new_callable=StringIO)

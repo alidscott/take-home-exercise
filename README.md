@@ -6,3 +6,6 @@ The basic arithmetic operations are defined into it's own class to keep the oper
 
 ## Space and Time Complexity 
 Time complexity is O(n) where n is the total number of characters the user enters. Space complexity is O(n) for storing input in the stack plus O(m) dict for storing operations, overall O(n)
+
+## Run locally
+Run `python3 main.py` in command line
