@@ -21,7 +21,7 @@ class Operations:
 
     def multiplication(self, stack):
         operand_one, operand_two = self.get_operands(stack)
-        res = operand_two * operand_one
+        res = operand_two * float(operand_one)
         stack.append(res)
         return res
 

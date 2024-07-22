@@ -15,6 +15,15 @@ class TestSum(unittest.TestCase):
             pass
         self.assertEqual(mock_stdout.getvalue(), "Not a valid input. Goodbye!\n")
 
+    @patch('builtins.input', side_effect=['1 2 3 p + - ', 'q'])
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_invalid_input_2(self, mock_stdout, mock_input):
+        try: 
+            main()
+        except SystemExit:
+            pass
+        self.assertEqual(mock_stdout.getvalue(), "Not a valid input. Goodbye!\n")
+
     @patch('builtins.input', side_effect=['10 * 3', 'q'])
     @patch('sys.stdout', new_callable=StringIO)
     def test_bad_operations(self, mock_stdout, mock_input):
@@ -59,6 +68,15 @@ class TestSum(unittest.TestCase):
         except SystemExit:
             pass
         self.assertEqual(mock_stdout.getvalue(), "0.25\n")
+
+    @patch('builtins.input', side_effect=['  -3       -2      *     ', 'q'])
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_negative_numbers(self, mock_stdout, mock_input):
+        try: 
+            main()
+        except SystemExit:
+            pass
+        self.assertEqual(mock_stdout.getvalue(), "6.0\n")
 
 
 if __name__ == '__main__':

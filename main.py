@@ -17,7 +17,8 @@ def main():
             for char in user_input: 
                 if char == 'q':
                     sys.exit()
-                if not char.isnumeric() and char not in operators: 
+                if not char.isdigit() and char not in operators and not char.lstrip('-').isdigit()  : 
+                  
                     print("Not a valid input. Goodbye!")
                     sys.exit()
                 if char in operators:
